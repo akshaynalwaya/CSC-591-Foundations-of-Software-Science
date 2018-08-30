@@ -1,0 +1,83 @@
+
+-----| testing_Whitespace |-----------------------
+# pass
+
+-----| testing_divisionByTwo |-----------------------
+# pass
+
+-----| testing_double |-----------------------
+# pass
+
+-----| testing_strings |-----------------------
+# pass
+
+-----| testing_exceptions |-----------------------
+# pass
+
+-----| testing_regex |-----------------------
+# pass
+
+-----| testing_lists |-----------------------
+# pass
+
+-----| testing_lenLists |-----------------------
+# pass
+
+-----| testing_tuplesSumProduct |-----------------------
+# pass
+
+-----| testing_dictionariesGetValue |-----------------------
+# pass
+
+-----| testing_dictionariesCheckValue |-----------------------
+# pass
+
+-----| testing_dictionariesCounter |-----------------------
+# pass
+
+-----| testing_sets |-----------------------
+# pass
+
+-----| testing_controlFlow |-----------------------
+# pass
+
+-----| testing_truthfullness |-----------------------
+# pass
+
+-----| testing_truthfullnessAll |-----------------------
+# pass
+
+-----| testing_sorting |-----------------------
+# pass
+
+-----| testing_listComprehensions |-----------------------
+# pass
+
+-----| testing_generator |-----------------------
+# pass
+
+-----| testing_randomness |-----------------------
+# pass
+
+-----| testing_regular_expression |-----------------------
+# pass
+
+-----| testing_oopAddFunction |-----------------------
+# pass
+
+-----| testing_oopDelFunction |-----------------------
+# pass
+
+-----| testing_exponent |-----------------------
+# pass
+
+-----| testing_enum |-----------------------
+# pass
+
+-----| testing_zipping |-----------------------
+# pass
+
+-----| testing_arg_unpack |-----------------------
+# pass
+
+# pass= 27 fail= 0 %pass = 100%
