@@ -2,20 +2,17 @@ import math
 from sample import Sample
 
 class Sym:
-    def __init__(self):
+
+    def __init__(self, syms, f = lambda x:x):
         self.counts = {}
         self.mode = None
         self.most = 0
         self.n = 0
         self._ent = None
-        
-    def syms(self, t, f=None):
-        if f == None:
-            f = lambda x : x
-        s = Sym()
-        for x in t:
-            s.symInc(f(x))
-        return s
+        self.syms = syms
+        for s in self.syms:
+            self.symInc(f(s))
+
         
     def symInc(self, x):
         if x == "?":

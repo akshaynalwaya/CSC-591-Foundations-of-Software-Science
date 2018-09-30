@@ -1,10 +1,10 @@
 from num import Num
 from sym import Sym
 from test import O
-import re, sys, math
-
+import re, sys
 
 class Rows:
+    
     def __init__(self):
         self.w = {}
         self.syms = {}
@@ -14,25 +14,16 @@ class Rows:
         self.name = []
         self._use = []
         self.indeps = []
-        
-    def indep(self,c):
+
+    def indep(self, c):
         return not c in self.w and self._class!=c
 
-    def dep(self,c):
-        return not indep(self,c)
+    def dep(self, c):
+        return not self.indep(c)
 
-    '''
-    header() function will read and process the 
-    special symbols denoting the following:
-    
-    Case 1: '<' -> dependent goal which will be maximized
-    Case 2: '>' -> dependent goal which will be minimized
-    Case 3: '$' -> denotes independent numeric column
-    Case 4: '!' -> denotes the
-    '''
     def header(self,cells):
-        self = self or Rows()
-        self.indep = []
+        # self = self or Rows()
+        # self.indep = []
         for c0,x in enumerate(cells):
             if not "?" in x:
                 c = len(self._use)
@@ -40,11 +31,9 @@ class Rows:
                 self.name.append(x)
         
                 if "$" in x or "<" in x or ">" in x:
-                    n1 = Num()
-                    self.nums[c] = n1.nums([])
+                    self.nums[c] = Num([])
                 else:
-                	s1 = Sym()
-                	self.syms[c] = s1.syms([])
+                	self.syms[c] = Sym([])
 
                 if "<" in x:
                     self.w[c] = -1
@@ -55,7 +44,7 @@ class Rows:
                 else:
                     self.indeps.append(c)
         return self
-    
+
     '''
     Processing each row and 
     deciding when to skip a value
@@ -74,34 +63,6 @@ class Rows:
             self.rows[r].append(x)
         return self
 
-'''
-Reading rows from the disk, processing each row using the row() function
-and then displaying the output in desired format
-'''
-def rows1(stream):
-	#Creating an object of type Rows()
-    line = Rows()
-    first = True
-    for line1 in stream:
-        line1 = re.sub(r'([\n\r\t]|#.*)', "", line1)
-        cells = line1.split(",")
-        if len(cells)>0 :
-            if first :
-                line.header(cells)
-            else :
-                line.row(cells)
-            first=False
-    ##Displaying the output in the required format
-    print("\t\t\t\tn\tmode\tfrequency")
-    for k, v in line.syms.items():
-        print("%s\t%s\t\t%s\t%s\t%s"%(k+1, line.name[k], v.n, v.mode, v.most))
-    print('\n')
-    # Printing hte statistics related to this file
-    print('\t\t\t\tn\tmu\tsd')
-    for k, v in line.nums.items():
-        print("%s\t%s\t\t%s\t%s\t%s"%(k+1, line.name[k], v.n, round(v.mu,2), round(v.sd,2)))
-
-
 def splitLines(text = None):
 	#check if the file has .csv extension
     if text[-3:] in ["csv",".dat"]:
@@ -116,19 +77,20 @@ def splitLines(text = None):
     	for line in text.splitlines():
     		yield line
 
-#wrapper function for parsing the given input text
-def rows(s):
-    rows1(splitLines(s))
+def rows1(stream):
+	#Creating an object of type Rows()
+    line = Rows()
+    first = True
+    for line1 in stream:
+        line1 = re.sub(r'([\n\r\t]|#.*)', "", line1)
+        cells = line1.split(",")
+        if len(cells)>0 and cells[0] != "" :
+            if first :
+                line.header(cells)
+            else :
+                line.row(cells)
+            first=False
+    return line
 
-# @O.k
-# def test():
-
-#     print("\nauto.csv\n")
-#     rows("auto.csv")
-#     # print("\n---------------------------")
-#     print("\nweather.csv\n")
-#     rows("weather.csv")
-#     # print("\n---------------------------")
-#     print("\nweatherLong.csv\n")
-#     rows("weatherLong.csv")
-#     print("---------------------------")
+def rows(src):
+    return rows1(splitLines(src))

@@ -2,16 +2,20 @@ import math
 from sample import Sample
 
 class Num:
-    def __init__(self, max_val=0):
-        self.n = 0
-        self.mu = 0
-        self.m2 = 0
-        self.sd = 0
-        self.lo = 10**32    
-        self.hi = -10**32
-        self._some = Sample(max_val)
-        self.w = 1
-        
+
+    def __init__(self, nums, f = lambda x:x):        
+        self.n=0
+        self.mu=0
+        self.m2=0
+        self.sd=0 
+        self.lo=10**32 
+        self.hi=-10**32 
+        self.max_val = len(nums)
+        self._some=Sample(self.max_val)
+        self.w=1
+
+        for n in nums:
+            self.numInc(f(n))       
         
     def nums(self, t, f = None):
         if f == None:
