@@ -55,7 +55,7 @@ class Num:
     def numNorm(self, x):
         return 0.5 if x=="?" else (x - self.lo)/(self.hi - self.lo + math.pow(10,-32))
         
-    def numXpect(i, j):
+    def numXpect(self, i, j):
         n = i.n + j.n + 0.0001
         return (i.n/n * i.sd + j.n/n * j.sd)
     
