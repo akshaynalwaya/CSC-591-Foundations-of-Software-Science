@@ -1,4 +1,16 @@
+from test import O
+from num import Num
+from sym import Sym
+from dom import dom
+from rows import Rows, rows
+import re, sys, math, random
 
+
+
+def super(data, goal, enough):
+	rows = data.rows
+	goal = goal if goal not None else len(rows[1])
+	
 
 
 function super(data,goal,enough,       rows,most)
