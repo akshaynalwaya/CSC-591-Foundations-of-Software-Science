@@ -30,7 +30,7 @@ super_margin = 1.05
 
 def super(data, goal=None, enough=None):
 	splitData = {}
-	print(type(data))
+	# print(type(data))
 	rows = data.rows
 	if goal == None:
 		goal = len(rows[0]) - 1
