@@ -28,6 +28,8 @@ class Num:
     def numInc(self, x):
         if x == "?":
             return x
+        x = float(x)
+        self.mu = float(self.mu)
         self.n += 1
         self._some.sampleInc(x)
         d = x - self.mu

@@ -27,12 +27,12 @@ def dom(t, row1, row2):
 def dump(rows):
     for row in rows:
         row[len(row)-1] = str("%.2f"%row[len(row)-1])
-        print("\t".join(str(r) for r in row))
+        # print("\t".join(str(r) for r in row))
         
 def doms(t):
     n = 100
     c = len(t.name)
-    print("\t"+ str(t.name) +"\t"+">dom")
+    # print("\t"+ str(t.name) +"\t"+">dom")
     for r1, row1 in enumerate(t.rows):
         row1.append(0)
         for i in range(n):
@@ -40,18 +40,19 @@ def doms(t):
             s = dom(t, row1, row2) and 1/n or 0
             row1[c] = row1[c] + s
     dump(t.rows)
+    return t
 
 def mainDom(file):
     doms(rows(file))
 
-@O.k
-def test1():
-    random.seed(1)
-    print("\nweatherLong.csv\n")
-    mainDom("weatherLong.csv")
+# @O.k
+# def test1():
+#     random.seed(1)
+#     print("\nweatherLong.csv\n")
+#     mainDom("weatherLong.csv")
 
-@O.k
-def test2():
-    random.seed(1)
-    print("\nauto.csv\n")
-    mainDom("auto.csv")
+# @O.k
+# def test2():
+#     random.seed(1)
+#     print("\nauto.csv\n")
+#     mainDom("auto.csv")
